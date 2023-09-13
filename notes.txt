@@ -1,0 +1,11 @@
+REQUESTS 
+        pip install requests
+        É  o pedido que um cliente realiza a nosso servidor. Esse pedido contém uma série de dados que são usados para descrever exatamente o que o cliente precisa.
+
+        São formas de fazer um software conversar com outro e permitir a troca de informações entre eles. Dessa forma, é possível integrar dados de diferentes plataformas,
+        mesmo que não haja uma integração nativa no aplicativo.
+
+import requests
+requisicao = requests.get(link)
+print(requisicao)
+print(requisicao.json())

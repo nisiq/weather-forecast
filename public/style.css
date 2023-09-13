@@ -1,0 +1,20 @@
+*{
+    background-color: rgb(178, 216, 238);
+}
+
+h1 {
+    text-align: center;
+    align-items: center;
+    color: rgb(41, 44, 221);
+}
+
+
+
+input#date {
+    width: 50%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+}
