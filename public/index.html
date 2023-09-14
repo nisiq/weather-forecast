@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Consulta de Clima</title>
 </head>
 <body>
-    <h1>
-        Previsão Do Tempo
-    </h1>
+    <h1>Consultar Clima</h1>
+    <input type="text" id="cidadeInput" placeholder="Digite o nome da cidade">
+    <button onclick="consultarClima()">Consultar</button>
+    <div id="resultado"></div>
 
-    <form action=" " method="post">
-        <label for="busca">Buscar</label>
-        <input type="search" id="busca" name="q">
-        <button type="submit">OK</button>
-      </form>
-    
+    <script>
+        function consultarClima() {
+            const cidade = document.getElementById("cidadeInput").value;
 
-    
+            // Fazer uma solicitação AJAX para a sua rota FastAPI
+            fetch(`/clima/${cidade}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultado = document.getElementById("resultado");
+                    if (data.descricao && data.temperatura) {
+                        resultado.innerHTML = `Descrição: ${data.descricao}, Temperatura: ${data.temperatura}°C`;
+                    } else {
+                        resultado.innerHTML = "Cidade não encontrada ou erro na solicitação.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao consultar o clima:", error);
+                    const resultado = document.getElementById("resultado");
+                    resultado.innerHTML = "Não foi possível obter o clima.";
+                });
+        }
+    </script>
 </body>
 </html>
